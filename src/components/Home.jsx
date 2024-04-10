@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { BsArrowUpRight, BsChevronDown } from 'react-icons/bs'
 
-import me from '../assets/me.jpg';
+import me from '../assets/me.png';
 
 const Home = () => {
 
