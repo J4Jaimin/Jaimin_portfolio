@@ -1,11 +1,21 @@
-import React from 'react'
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react'
+import { motion, animate } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { BsArrowUpRight, BsChevronDown } from 'react-icons/bs'
 
 import me from '../assets/me.png';
 
 const Home = () => {
+
+    const projectCount = useRef(null);
+    const clientCount = useRef(null);
+
+    const animationClientCount = (key) => {
+        animate(0, key === "project" ? 40 : 10, {
+            duration: 1,
+            onUpdate: (v) => (key === "project" ? projectCount.current.textContent = v.toFixed() : clientCount.current.textContent = v.toFixed()),
+        });
+    }
 
     const animation = {
         h1: {
@@ -57,7 +67,16 @@ const Home = () => {
                     <aside>
                         <article>
                             <p>
-                                +<span>10</span>
+                                +<motion.span whileInView={() => animationClientCount("client")} ref={clientCount}></motion.span>
+                            </p>
+                            <span>Clients</span>
+                        </article>
+                    </aside>
+
+                    <aside>
+                        <article>
+                            <p>
+                                +<motion.span whileInView={() => animationClientCount("project")} ref={projectCount}></motion.span>
                             </p>
                             <span>Projects Done!</span>
                         </article>
