@@ -10,3 +10,9 @@
         transform: translateY(-5px);
     }
 }
+
+@keyframes upanddowndown {
+    to{
+        transform: translateY(-10px);
+    }
+}
