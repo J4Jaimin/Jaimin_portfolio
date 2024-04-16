@@ -16,7 +16,6 @@ const NavContent = () => (
             <a href='#work'>work</a>
             <a href='#timeline'>Timeline</a>
             <a href='#services'>Services</a>
-            <a href='#testimonial'>Testimonial</a>
             <a href='#contact'>Contact</a>
         </div>
         <a href='mailto: jaiminrana1102@gmail.com'>
