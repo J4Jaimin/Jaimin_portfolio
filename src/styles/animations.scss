@@ -4,3 +4,9 @@
         transform: translate(-50%, -10px);
     }
 }
+
+@keyframes upanddown {
+    to{
+        transform: translateY(-5px);
+    }
+}
