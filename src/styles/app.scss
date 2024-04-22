@@ -9,6 +9,7 @@
 @import 'services';
 @import 'contact';
 @import 'footer';
+@import 'mediaquery';
 
 * {
     margin: 0%;
@@ -28,6 +29,6 @@ body {
 }
 
 .disableBtn {
-    background-color: rgb(237, 237, 237);
-    cursor: not-allowed;
+    background-color: rgb(185, 182, 182) !important;
+    cursor: not-allowed !important;
 }

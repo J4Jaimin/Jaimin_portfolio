@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import vg from '../assets/vg.png';
 import { motion } from 'framer-motion';
-
+import { addDoc, collection } from "firebase/firestore";
+import { db } from '../firebase';
 
 const Contact = () => {
 
@@ -11,6 +12,7 @@ const Contact = () => {
     // const [msg, setMsg] = useState("");
 
     const [inputs, setInputs] = useState({ name: "", email: "", msg: "" });
+    const [disableBtn, setDisableBtn] = useState(false);
 
     const animations = {
         form: {
@@ -39,17 +41,31 @@ const Contact = () => {
         },
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(inputs.name, inputs.email, inputs.msg);
-        toast.success("Message sent!");
+
+        setDisableBtn(true);
+
+        try {
+            await addDoc(collection(db, "contacts"), {
+                name: inputs.name,
+                email: inputs.email,
+                msg: inputs.msg,
+            });
+
+            toast.success("Message sent!");
+            setInputs({ name: "", email: "", msg: "" });
+            setDisableBtn(false);
+        }
+        catch (error) {
+            toast.error("Error while submitting contact form.");
+            setDisableBtn(false);
+        }
     }
 
     const changeHandler = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
-
-    console.log(inputs);
 
     return (
         <div id="contact">
@@ -61,7 +77,7 @@ const Contact = () => {
                     <input type='email' name="email" value={inputs.email} onChange={changeHandler} placeholder='Your Email..' required />
                     <input type='text' name="msg" value={inputs.msg} onChange={changeHandler} placeholder='Your Message..' required />
 
-                    <motion.button type='submit' {...animations.button}>Send</motion.button>
+                    <motion.button className={disableBtn ? "disableBtn" : ""} disabled={disableBtn} type='submit' {...animations.button}>Send</motion.button>
                 </motion.form>
             </section>
 
