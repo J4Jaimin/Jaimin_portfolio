@@ -45,4 +45,17 @@ nav {
         }
     }
 
+    > button {
+        border: none;
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        cursor: pointer;
+        color: $color5;
+        display: none;
+        font-size: 1.4rem;
+        &:hover {
+            color: $color3;
+        }
+    }
 }

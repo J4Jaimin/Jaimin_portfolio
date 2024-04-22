@@ -5,7 +5,9 @@ const Header = () => {
     return (
         <nav>
             <NavContent />
-            <AiOutlineMenu />
+            <button>
+                <AiOutlineMenu />
+            </button>
         </nav>
     )
 }

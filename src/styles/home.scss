@@ -7,7 +7,7 @@
         width: 100%;
 
         &:first-of-type {
-            padding-left: 8.5rem;
+            padding-left: $p;
             > div {
                 border-top: 1px solid $color6_2;
                 height: 100%;
