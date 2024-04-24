@@ -8,12 +8,11 @@ import me from '../assets/me.png';
 const Home = () => {
 
     const projectCount = useRef(null);
-    const clientCount = useRef(null);
 
     const animationClientCount = (key) => {
-        animate(0, key === "project" ? 40 : 10, {
+        animate(0, 20, {
             duration: 1,
-            onUpdate: (v) => (key === "project" ? projectCount.current.textContent = v.toFixed() : clientCount.current.textContent = v.toFixed()),
+            onUpdate: (v) => projectCount.current.textContent = v.toFixed(),
         });
     }
 
@@ -63,15 +62,6 @@ const Home = () => {
                         <a href='mailto: jaiminrana1102@gmail.com'>Hire Me!</a>
                         <a href='#work'>Projects <BsArrowUpRight /></a>
                     </div>
-
-                    <aside>
-                        <article>
-                            <p>
-                                +<motion.span whileInView={() => animationClientCount("client")} ref={clientCount}></motion.span>
-                            </p>
-                            <span>Clients</span>
-                        </article>
-                    </aside>
 
                     <aside>
                         <article>
